@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Riya</title>
+  </head>
+  <body>
+    <div>
+      <span>enter text</span>
+      <form action="/sentiment" method = "post">
+           <p><input type = "text" name = "nm" /></p>
+           <p><input type = "submit" value = "submit" /></p>
+      </form>
+    </div>
+
+    <div>
+      {% if probability %}
+        {{sentiment}}
+      {% endif%}
+    </div>
+  </body>
+</html>
