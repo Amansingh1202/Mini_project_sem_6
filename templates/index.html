@@ -10,13 +10,16 @@
   </head>
   <body>
       <div class="cont">
-        <form class="form-container">
-            <textarea name="name" class="form-control"></textarea><br>
-            <button type="button" class="btn btn-warning" name="button">Check</button><br>
-        </form>
-        <form class="review-area">
+        <div class="allReviews">
+            <textarea name="name" class="form-control">
+            {% for val in reviews %}
+                <div>{{ val }}</div>
+          {% endfor %}
+            </textarea><br>
+        </div>
+        <form action="/sentiment_analysis" method="post" class="review-area">
             <input id="review-ip" type="text" placeholder="Please Enter Review" name="review" required><br>
-            <button type="button" class="btn btn-warning review-btn" name="button">Add</button><br>
+            <button type="submit" class="btn btn-warning" name="button">Check</button><br>
         </form>
       </div>
   </body>
