@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request
-from tensorflow.keras.models import load_model
-import numpy as np
+import pandas as pd
+import requests
+import json
+
+url = "http://localhost:8501/v1/models/my_model:predict"
 
 
 app = Flask(__name__)
@@ -13,18 +16,32 @@ def home():
 
 @app.route("/sentiment", methods=["POST", "GET"])
 def sentiment_analysis():
-    model = load_model("model_py", compile=False)
+    # model = load_model("model_py", compile=False)
 
     if request.method == "POST":
         input = request.form.get("nm")
-        probability = model.predict(np.array([input]))[0][0]
+        inputValue = [input]
+        inputValues = pd.DataFrame(inputValue)
+        print(inputValues)
+        data = json.dumps(
+            {
+                "signature_name": "serving_default",
+                "instances": inputValues.values.tolist(),
+            }
+        )
+        print(data)
+        headers = {"content-type": "application/json"}
+        json_response = requests.post(url, data=data, headers=headers)
+        probability = json.loads(json_response.text)
         print(probability)
-        if probability < 0:
-            sentiment = "Negative"
-        elif probability >= 0:
-            sentiment = "Positive"
+        # probability = model.predict(np.array([input]))[0][0]
+        # print(probability)
+        # if probability < 0:
+        #     sentiment = "Negative"
+        # elif probability >= 0:
+        #     sentiment = "Positive"
         return render_template(
-            "index.html", nm=input, probability=probability, sentiment=sentiment
+            "index.html", nm=input, probability=probability, sentiment=probability
         )
 
 
