@@ -3,3 +3,5 @@
 .vscode
 .dist/
 docker_commands.txt
+database/
+__pycache__/

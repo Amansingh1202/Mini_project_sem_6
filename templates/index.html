@@ -11,11 +11,15 @@
   <body>
       <div class="cont">
         <div class="allReviews">
-            <textarea name="name" class="form-control">
+            <div name="name" class="form-control">
             {% for val in reviews %}
-                <div>{{ val }}</div>
+                {% if val["result"] == 0 %}
+                  <div class="data" style="color:red">&#x1F641;    {{val["reviewData"]}}</div>
+                {% else %}
+                  <div class="data" style="color:green">&#x1F603;  {{val["reviewData"]}}</div>
+                {% endif %}
           {% endfor %}
-            </textarea><br>
+            </div><br>
         </div>
         <form action="/sentiment_analysis" method="post" class="review-area">
             <input id="review-ip" type="text" placeholder="Please Enter Review" name="review" required><br>

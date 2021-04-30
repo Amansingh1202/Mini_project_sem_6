@@ -1,52 +1,25 @@
-from flask import Flask, render_template, request
-import pandas as pd
-import requests
-import json
-import numpy as np
-
-url = "http://localhost:8501/v1/models/my_model:predict"
-
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship
 
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///./database/database.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-reviews = []
-
-
-@app.route("/")
-def home():
-    return render_template("index.html")
+db = SQLAlchemy(app)
 
 
-@app.route("/sentiment_analysis", methods=["POST", "GET"])
-def sentiment_analysis():
-    if request.method == "POST":
-        input = request.form.get("review")
-        inputValue = [input]
-        inputValues = pd.DataFrame(inputValue)
-        print(inputValues)
-        data = json.dumps(
-            {
-                "signature_name": "serving_default",
-                "instances": inputValues.values.tolist(),
-            }
-        )
-        print(data)
-        headers = {"content-type": "application/json"}
-        json_response = requests.post(url, data=data, headers=headers)
-        output = json.loads(json_response.text)
-        probability = np.squeeze(output["predictions"][0])
-        print(probability)
-        if probability < 0:
-            review_result1 = 0
-        elif probability >= 0:
-            review_result1 = 1
-        new_review = {"reviewData": input, "result": review_result1}
-        reviews.append(new_review)
-        return render_template(
-            "index.html",
-            reviews=reviews,
-        )
+class Movie(db.Model):
+    id = db.Column("movie_id", db.Integer, primary_key=True)
+    movie_name = db.Column(db.String(30))
+    average_score = db.Column(db.Float)
+    children = relationship("Child")
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+class Comments(db.Model):
+    id = db.Column("comments_id", db.Integer, primary_key=True)
+    comment = db.Column(db.String(120))
+    movie_id = db.Column(db.Integer, db.ForeignKey("movie.movie_id"))
+
+
+db.create_all()
