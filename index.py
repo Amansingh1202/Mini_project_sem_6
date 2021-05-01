@@ -4,6 +4,12 @@ import requests
 import json
 import numpy as np
 from flask_sqlalchemy import SQLAlchemy
+import json
+
+f = open(
+    "./movies.json",
+)
+data = json.load(f)
 
 url = "http://localhost:8501/v1/models/my_model:predict"
 
@@ -20,6 +26,16 @@ reviews = []
 @app.route("/")
 def home():
     return render_template("index.html")
+
+
+@app.route("/movie_page/<movie_id>")
+def movie_page(movie_id):
+    movie_data = {}
+    for d in data["movies"]:
+        if int(d["id"]) == int(movie_id):
+            movie_data = d
+    print(movie_data)
+    return render_template("movie_page.htm", movie_data=movie_data)
 
 
 @app.route("/sentiment_analysis", methods=["POST", "GET"])

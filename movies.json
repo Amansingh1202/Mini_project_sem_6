@@ -1,0 +1,52 @@
+{
+    "movies":[
+        {
+            "id":1,
+            "name":"Iron Man (2008)",
+            "description":"An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
+            "director":"Jon Favreau",
+            "actors":"Robert Downey Jr., Gwyneth Paltrow, Terrence Howard",
+            "image":"images/movie1.jpg"
+        },
+    {
+        "id":2,
+        "name":"The Amazing Spider-Man",
+        "description":"An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
+        "director":"Marc Webb",
+        "actors":"Robert Downey Jr., Gwyneth Paltrow, Terrence Howard",
+        "image":"images/movie2.jpg"
+    },
+    {
+        "id":3,
+        "name":"Star Wars: The Rise of Skywalker",
+        "description":"A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+        "director":"J.J. Abrams",
+        "actors":"Daisy Ridley, John Boyega, Oscar Isaac",
+        "image":"images/movie3.jpg"
+    },
+    {
+        "id":4,
+        "name":"Avatar (2009)",
+        "description":"Teen Miles Morales becomes the Spider-Man of his universe, and must join with five spider-powered individuals from other dimensions to stop a threat for all realities.",
+        "director":"James Cameron",
+        "actors":"Sam Worthington, Zoe Saldana, Sigourney Weaver",
+        "image":"images/movie4.jpg"
+    },
+    {
+        "id":5,
+        "name":"Godzilla (2014)",
+        "description":"Three friends decide to turn their fantasy vacation into reality after one of their friends gets engaged.",
+        "director":"Gareth Edwards",
+        "actors":"Aaron Taylor-Johnson, Elizabeth Olsen, Bryan Cranston",
+        "image":"images/movie5.jpg"
+    },
+    {
+        "id":6,
+        "name":"THOR (2011)",
+        "description":"The surviving members of the Resistance face the First Order once again, and the legendary conflict between the Jedi and the Sith reaches its peak, bringing the Skywalker saga to its end.",
+        "director":"Kenneth Branagh",
+        "actors":"Chris Hemsworth, Anthony Hopkins, Natalie Portman",
+        "image":"images/movie6.jpg"
+    }
+]
+}

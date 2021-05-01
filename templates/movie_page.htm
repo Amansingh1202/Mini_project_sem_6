@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <title>Movie</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('home')}}">Home</a>
+      </div>
+      <img src="{{ url_for('static', filename=movie_data.image) }}" class="img-fluid" alt="Responsive image">
+    <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="{{ url_for('static', filename=movie_data.image) }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{movie_data.name}}</h5>
+          <p class="card-text">{{movie_data.description}}<br />
+              Director:{{movie_data.director}}<br />
+              Actors:{{movie_data.actor}}
+          </p>
+        </div>
+      </div>
+      <div class="footer">
+        <h3>Thank you for visiting</h3>
+      </div>
+</body>
+</html>
