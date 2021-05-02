@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <title>Movie Review System</title>
+  </head>
+  <body>
+  <div class="navbar">
+    <a href="{{ url_for('home')}}">Home</a>
+  </div>
+    <div class="container">
+      <div class="row">
+      <a href="{{ url_for('movie_page',movie_id=1) }}">
+        <div class="col_box">
+          <img src="../static/images/movie1.jpg">
+          <h4>Iron Man (2008)</h4>
+          <h6><b>Director: </b> Jon Favreau </h6>
+          <h6><b>Writers: </b> Mark Fergus, Hawk Ostby </h6>
+          <h6><b>Stars: </b> Robert Downey Jr., Gwyneth Paltrow, Terrence Howard</h6>
+          </div>
+          </a>
+          <a href="{{ url_for('movie_page',movie_id=2) }}">
+        <div class="col_box">
+          <img src="../static/images/movie2.jpg">
+          <h4>The Amazing Spider-Man</h4>
+          <h6><b>Director: </b> Marc Webb </h6>
+          <h6><b>Writers: </b> James Vanderbilt, Alvin Sargent </h6>
+          <h6><b>Stars: </b> Andrew Garfield, Emma Stone, Rhys Ifans</h6>
+        </div>
+        </a>
+        <a href="{{ url_for('movie_page',movie_id=3) }}">
+        <div class="col_box">
+          <img src="../static/images/movie3.jpg">
+          <h4>Star Wars: The Rise of Skywalker</h4>
+          <h6><b>Director: </b>  J.J. Abrams </h6>
+          <h6><b>Writers: </b>  Chris Terrio, J.J. Abrams </h6>
+          <h6><b>Stars: </b>  Daisy Ridley, John Boyega, Oscar Isaac </h6>
+        </div>
+        </a>
+        <a href="{{ url_for('movie_page',movie_id=4) }}">
+        <div class="col_box">
+          <img src="../static/images/movie4.jpg">
+          <h4>Avatar (2009)</h4>
+          <h6><b>Director: </b>  James Cameron </h6>
+          <h6><b>Writers: </b>  James Cameron </h6>
+          <h6><b>Stars: </b>  Sam Worthington, Zoe Saldana, Sigourney Weaver </h6>
+        </div>
+        </a>
+        <a href="{{ url_for('movie_page',movie_id=5) }}">
+        <div class="col_box">
+          <img src="../static/images/movie5.jpg">
+          <h4>Godzilla (2014)</h4>
+          <h6><b>Director: </b>   Gareth Edwards </h6>
+          <h6><b>Writers: </b> Ishirô Honda, Takeo Murata </h6>
+          <h6><b>Stars: </b> Aaron Taylor-Johnson, Elizabeth Olsen, Bryan Cranston  </h6>
+        </div>
+        </a>
+        <a href="{{ url_for('movie_page',movie_id=6) }}">
+        <div class="col_box">
+          <img src="../static/images/movie6.jpg">
+          <h4>THOR (2011)</h4>
+          <h6><b>Director: </b>  Kenneth Branagh </h6>
+          <h6><b>Writers: </b>  Ashley Miller, Zack Stentz </h6>
+          <h6><b>Stars: </b>  Chris Hemsworth, Anthony Hopkins, Natalie Portman </h6>
+        </div>
+        </div>
+        </a>
+      </div>
+      <div class="footer">
+  <h3>Thank you for visiting</h3>
+</div>
+  </body>
+</html>

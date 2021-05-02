@@ -1,0 +1,67 @@
+body{
+  background-image: url("../images/back2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+.row {
+  padding-top: 4%;
+}
+
+.col_box{
+  width: 350px;
+  height: 350px;
+  box-shadow: 5px 10px 20px gray;
+  border-radius: 10px;
+  margin: 0px 20px 30px 10px;
+  overflow: hidden;
+  background-color: white;
+
+}
+
+.col_box img{
+  max-width:100%;
+  height:auto;
+  object-fit: cover;
+  object-position: top;
+
+}
+
+.col_box:hover {
+  transform: translateX(-3px);
+}
+
+h4 {
+  text-align: center;
+}
+
+h6{
+  padding-left: 10px;
+
+}
+
+
+.navbar{
+  background-color: white;
+  color:black;
+  font-size: 1.2em;
+}
+a{
+  text-decoration: none;
+  color:black;
+}
+a:hover{
+  color:gray;
+  text-decoration: none;
+}
+.footer{
+  background-color: white;
+  color:gray;
+  font-size: 1.2em;
+  padding: 10px;
+}
+h3{
+  margin-left: 40%;
+}
