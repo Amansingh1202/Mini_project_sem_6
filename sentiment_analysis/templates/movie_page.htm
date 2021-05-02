@@ -18,21 +18,21 @@
       <p>{{movie_data.description}}<br>
         <b>Director:</b>{{movie_data.director}} <br>
         <b>Stars:</b>{{movie_data.actors}}<br></p>
-      <div class="comments overflow-auto">
-        {% for val in reviews %}
-                {% if val["review_status"] == 0 %}
-                  <div class="data" style="color:red">&#x1F641;    {{val["comment"]}}</div>
-                {% else %}
-                  <div class="data" style="color:green">&#x1F603;  {{val["comment"]}}</div>
-                {% endif %}
-          {% endfor %}
-      </div>
         <div class="form-1" >
           <form action="{{ url_for('sentiment_analysis',movie_id=movie_data.id)}}" method="POST">
             <label for="nm"><h4>Comments</h4></label>
             <input type="text" name="review" id="mytext" placeholder="Please enter your comments here">
             <button type="submit" name="button" class="btn btn-warning">Submit</button>
           </form>
+        </div>
+        <div class="comments overflow-auto">
+          {% for val in reviews %}
+                  {% if val["review_status"] == 0 %}
+                    <div class="data" style="color:red">&#x1F641;    {{val["comment"]}}</div>
+                  {% else %}
+                    <div class="data" style="color:green">&#x1F603;  {{val["comment"]}}</div>
+                  {% endif %}
+            {% endfor %}
         </div>
     </div>
   </body>
