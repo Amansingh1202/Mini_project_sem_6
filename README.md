@@ -16,7 +16,7 @@ touch database.db
 Start python shell in sentiment_analysis folder and run
 ```
 import model
-model.create_all()
+model.db.create_all()
 ```
 
 From sentiment_analysis folder run the following command to store movies
