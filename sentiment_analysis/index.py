@@ -90,5 +90,5 @@ def sentiment_analysis(movie_id):
 
 
 if __name__ == "__main__":
-    print("The app will run at http://127.0.0.1:5000/")
-    app.run()
+    # print("The app will run at http://127.0.0.1:5000/")
+    app.run(host="0.0.0.0", port=8080, debug=True)
