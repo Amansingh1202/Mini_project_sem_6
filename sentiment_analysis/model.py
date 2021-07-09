@@ -16,3 +16,4 @@ class Comments(db.Model):
     comment = db.Column(db.String(120))
     review_status = db.Column(db.Integer)
     movie_id = db.Column(db.Integer, db.ForeignKey("movie.movie_id"))
+

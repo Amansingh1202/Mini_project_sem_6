@@ -28,9 +28,9 @@
         <div class="comments overflow-auto">
           {% for val in reviews %}
                   {% if val["review_status"] == 0 %}
-                    <div class="data" style="color:red">&#x1F641;    {{val["comment"]}}</div>
+                    <div class="data" style="background-color:#FF8484"><span style="border-right: 2px solid darkslategray;margin-right: 10px;padding-right: 10px;">&#x1F641;</span>   {{val["comment"]}}</div>
                   {% else %}
-                    <div class="data" style="color:green">&#x1F603;  {{val["comment"]}}</div>
+                    <div class="data" style="background-color:#90ee90"><span style="border-right: 2px solid darkslategray; margin-right: 10px;padding-right: 10px;">&#x1F603;</span>  {{val["comment"]}}</div>
                   {% endif %}
             {% endfor %}
         </div>

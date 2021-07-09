@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 import numpy as np
 import model
+import demoji
 import json
 from __init__ import app
 import logging
@@ -57,6 +58,8 @@ def sentiment_analysis(movie_id):
             if int(d["id"]) == int(movie_id):
                 movie_data = d
         input = request.form.get("review")
+        input1 = input
+        input = demoji.replace_with_desc(input, ":").replace(":", "")
         inputValue = [input]
         inputValues = pd.DataFrame(inputValue)
         data = json.dumps(
@@ -73,10 +76,10 @@ def sentiment_analysis(movie_id):
             review_result1 = 0
         elif probability >= 0:
             review_result1 = 1
-        new_review = {"reviewData": input, "result": review_result1}
+        new_review = {"reviewData": input1, "result": review_result1}
         movie = model.Movie.query.filter_by(id=movie_id).first()
         new_review = model.Comments(
-            comment=input, review_status=review_result1, movie_id=movie_id
+            comment=input1, review_status=review_result1, movie_id=movie_id
         )
         movie.average_score = movie.average_score + probability
         model.db.session.add(new_review)
