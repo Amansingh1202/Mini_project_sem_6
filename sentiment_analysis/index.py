@@ -31,13 +31,23 @@ def convert_range(val):
 @app.route("/")
 def home():
     movies = model.Movie.query.all()
+    # Finds top 5 Movies with highest average score from the database
+    top_movies = (
+        model.Movie.query.order_by(model.Movie.average_score.desc()).limit(5).all()
+    )
+    top_movies_src = []
+    for movie in top_movies:
+        src_val = "../static/images/movie" + str(movie.id) + ".jpg"
+        top_movies_src.append(src_val)
     movie_scores = []
     for mov in movies:
         movie_scores.append(mov.average_score)
     score_new = []
     for score in movie_scores:
         score_new.append(convert_range(score))
-    return render_template("index.html", scores=score_new)
+    return render_template(
+        "index.html", scores=score_new, top_movies_src=top_movies_src
+    )
 
 
 @app.route("/movie_page/<movie_id>")

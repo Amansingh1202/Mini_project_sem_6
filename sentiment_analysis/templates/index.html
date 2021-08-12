@@ -5,13 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/ex.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/lightslider.css') }}">
+    <script src="{{ url_for('static',filename='js/JQuery3.3.1.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/lightslider.js') }}"></script>
     <title>Movie Review System</title>
   </head>
   <body>
   <div class="navbar">
     <a href="{{ url_for('home')}}">Home</a>
   </div>
+
+
+  <div class="showcase-container">
+    <h1 class="showcasing">Popular</h1>
+    <!----slider--section---->
+    <ul id="autoWidth" class="cs-hidden">
+        <!----box-1---->
+        <li class="item-a">
+            <div class="showcase-box">
+                <img src={{top_movies_src[0]}}>
+            </div>
+        </li>
+        <!----box-2---->
+        <li class="item-b">
+            <div class="showcase-box">
+                <img src={{top_movies_src[1]}}>
+            </div>
+        </li>
+        <!----box-3---->
+        <li class="item-c">
+            <div class="showcase-box">
+                <img src={{top_movies_src[2]}}>
+            </div>
+        </li>
+        <!----box-4---->
+        <li class="item-d">
+            <div class="showcase-box">
+                <img src={{top_movies_src[3]}}>
+            </div>
+        </li>
+        <!----box-5---->
+        <li class="item-e">
+            <div class="showcase-box">
+                <img src={{top_movies_src[4]}}>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+
     <div class="container">
       <div class="row">
       <a href="{{ url_for('movie_page',movie_id=1) }}">
@@ -105,4 +153,15 @@
   <h3>Thank you for visiting</h3>
 </div>
   </body>
+  <script>
+    $(document).ready(function() {
+        $('#autoWidth').lightSlider({
+            autoWidth: true,
+            loop: true,
+            onSliderLoad: function() {
+                $('#autoWidth').removeClass('cS-hidden');
+            }
+        });
+    });
+</script>
 </html>
