@@ -7,6 +7,9 @@ import demoji
 import json
 from __init__ import app
 import logging
+from gingerit.gingerit import GingerIt
+parser = GingerIt()
+
 
 log = logging.getLogger("werkzeug")
 log.setLevel(logging.ERROR)
@@ -67,10 +70,11 @@ def sentiment_analysis(movie_id):
         for d in movie_data_json["movies"]:
             if int(d["id"]) == int(movie_id):
                 movie_data = d
-        input = request.form.get("review")
-        input1 = input
-        input = demoji.replace_with_desc(input, ":").replace(":", "")
-        inputValue = [input]
+        inputV = request.form.get("review")
+        input1 = inputV
+        inputV = demoji.replace_with_desc(inputV, ":").replace(":", "")
+        inputV = parser.parse(inputV)
+        inputValue = [inputV]
         inputValues = pd.DataFrame(inputValue)
         data = json.dumps(
             {

@@ -24,7 +24,7 @@
   <div class="showcase-container">
     <h1 class="showcasing">Popular</h1>
     <!----slider--section---->
-    <ul id="autoWidth" class="cs-hidden">
+    <ul id="lightSlider" class="cs-hidden">
         <!----box-1---->
         <li class="item-a">
             <div class="showcase-box">
@@ -163,5 +163,12 @@
             }
         });
     });
+      $(document).ready(function() {
+        $("#lightSlider").lightSlider({
+          autoWidth: true,
+          auto:true,
+          loop:true
+        }); 
+      });
 </script>
 </html>
