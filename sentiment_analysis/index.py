@@ -4,11 +4,24 @@ import requests
 import numpy as np
 import model
 import demoji
+import csv
 import json
 from __init__ import app
 import logging
 from gingerit.gingerit import GingerIt
+
 parser = GingerIt()
+
+# Creating a slang dictionary from doc file
+slang_data = []
+with open("slang_dict.doc", "r") as exRtFile:
+    exchReader = csv.reader(exRtFile, delimiter="`", quoting=csv.QUOTE_NONE)
+    for row in exchReader:
+        slang_data.append(row)
+slang_dict = {}
+for word in slang_data:
+    if len(word) >= 2:
+        slang_dict[word[0]] = word[1]
 
 
 log = logging.getLogger("werkzeug")
@@ -73,8 +86,13 @@ def sentiment_analysis(movie_id):
         inputV = request.form.get("review")
         input1 = inputV
         inputV = demoji.replace_with_desc(inputV, ":").replace(":", "")
+        vb = inputV.split(" ")
+        for w in range(len(vb)):
+            if vb[w] in slang_dict:
+                vb[w] = slang_dict[vb[w]]
+        inputV = " ".join(vb)
         inputV = parser.parse(inputV)
-        inputValue = [inputV]
+        inputValue = [inputV["result"]]
         inputValues = pd.DataFrame(inputValue)
         data = json.dumps(
             {
@@ -107,5 +125,4 @@ def sentiment_analysis(movie_id):
 
 
 if __name__ == "__main__":
-    # print("The app will run at http://127.0.0.1:5000/")
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True, threaded=True)
