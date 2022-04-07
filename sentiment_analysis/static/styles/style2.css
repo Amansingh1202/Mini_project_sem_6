@@ -89,6 +89,7 @@ a:hover{
   margin:30px;
   background-color: gainsboro;
   height: 400px;
+  overflow-x: scroll;
 }
 
 .data{

@@ -8,9 +8,9 @@ import csv
 import json
 from __init__ import app
 import logging
-from gingerit.gingerit import GingerIt
+from autocorrect import Speller
 
-parser = GingerIt()
+spell = Speller(lang='en')
 
 # Creating a slang dictionary from doc file
 slang_data = []
@@ -91,8 +91,12 @@ def sentiment_analysis(movie_id):
             if vb[w] in slang_dict:
                 vb[w] = slang_dict[vb[w]]
         inputV = " ".join(vb)
-        inputV = parser.parse(inputV)
-        inputValue = [inputV["result"]]
+        words = inputV.split(" ")
+        words1 = []
+        for w in words:
+            words1.append(spell(w))
+        inputV = " ".join(words1)
+        inputValue = [inputV]
         inputValues = pd.DataFrame(inputValue)
         data = json.dumps(
             {
